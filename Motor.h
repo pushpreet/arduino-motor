@@ -8,13 +8,13 @@ class motor
   private:
 	unsigned char pinA, pinB, pinPWM;
 	int speed;
+	unsigned int maxSpeed;
 	
   public:
 	motor();
-	
-	motor(unsigned int _pinA, unsigned int _pinB, int _speed);
+	motor(unsigned char _pinA, unsigned char _pinB, unsigned char _pinPWM = 255, unsigned int _maxSpeed = 255);
 
-	void setPins( unsigned int _pinA, unsigned int _pinB );
+	void setPins( unsigned char _pinA, unsigned char _pinB, unsigned char _pinPWM );
 	void initialise( );
 	void setSpeed( int _speed );
 	void write( int _speed );
