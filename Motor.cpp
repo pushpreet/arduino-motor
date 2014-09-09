@@ -25,6 +25,11 @@ void motor::setPins(unsigned char _pinA, unsigned char _pinB, unsigned char _pin
 	pinPWM = _pinPWM;
 }
 
+void motor::setMaxSpeed(unsigned int _maxSpeed)
+{
+	maxSpeed = _maxSpeed;
+}
+
 void motor::initialise()
 {
 	if ((pinA == 255) || (pinB == 255))
@@ -92,35 +97,35 @@ void motor::write()
 {
 	if (pinPWM == 255)
 	{
-		if (_speed >= 0)
+		if (speed >= 0)
 		{
-			analogWrite(pinA, _speed);
+			analogWrite(pinA, speed);
 			digitalWrite(pinB, LOW);
 		}
 
-		else if (_speed < 0)
+		else if (speed < 0)
 		{
-			analogWrite(pinA, maxSpeed + _speed);
+			analogWrite(pinA, maxSpeed + speed);
 			digitalWrite(pinB, HIGH);
 		}
 	}
 
 	else
 	{
-		if (_speed >= 0)
+		if (speed >= 0)
 		{
 			digitalWrite(pinA, HIGH);
 			digitalWrite(pinB, LOW);
 
-			analogWrite(pinPWM, _speed);
+			analogWrite(pinPWM, speed);
 		}
 
-		else if (_speed < 0)
+		else if (speed < 0)
 		{
 			digitalWrite(pinA, LOW);
 			digitalWrite(pinB, HIGH);
 
-			analogWrite(pinPWM, -_speed);
+			analogWrite(pinPWM, -speed);
 		}
 	}
 }

@@ -15,6 +15,7 @@ class motor
 	motor(unsigned char _pinA, unsigned char _pinB, unsigned char _pinPWM = 255, unsigned int _maxSpeed = 255);
 
 	void setPins( unsigned char _pinA, unsigned char _pinB, unsigned char _pinPWM );
+	void setMaxSpeed(unsigned int _maxSpeed);
 	void initialise( );
 	void setSpeed( int _speed );
 	void write( int _speed );
