@@ -46,6 +46,15 @@ void motor::initialise()
 
 void motor::setSpeed(int _speed)
 {
+	if (_speed > maxSpeed)
+	{
+		_speed = maxSpeed;
+	}
+	else if (_speed < -maxSpeed)
+	{
+		_speed = -maxSpeed;
+	}
+
 	speed = _speed;
 }
 
@@ -58,6 +67,15 @@ void motor::stop()
 
 void motor::write(int _speed)
 {
+	if (_speed > maxSpeed)
+	{
+		_speed = maxSpeed;
+	}
+	else if (_speed < -maxSpeed)
+	{
+		_speed = -maxSpeed;
+	}
+
 	if (pinPWM == 255)
 	{
 		if (_speed >= 0)
