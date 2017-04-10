@@ -62,7 +62,9 @@ void motor::stop()
 {
 	digitalWrite(pinA, LOW);
 	digitalWrite(pinB, LOW);
-	analogWrite(pinPWM, LOW);
+
+	if (pinPWM != 255)
+		analogWrite(pinPWM, LOW);
 }
 
 void motor::write(int _speed)
